@@ -20,7 +20,7 @@ struct ContentView: View {
                 }
                 .pickerStyle(.segmented)
                 .colorMultiply(.accentColor)
-                .font(.custom("Cairo", size: 15))
+                .font(.custom("Cairo-Light", size: 15))
                 
                 List {
                     

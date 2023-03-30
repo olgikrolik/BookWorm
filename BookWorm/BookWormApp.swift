@@ -11,7 +11,7 @@ import SwiftUI
 struct BookWormApp: App {
     
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "Cairo" , size: 34)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "Cairo-Light" , size: 34)!]
     }
     
     var body: some Scene {
