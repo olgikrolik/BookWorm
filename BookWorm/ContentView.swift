@@ -9,12 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var bookgenre = 0
+    
     var body: some View {
         NavigationView {
-            List {
+            VStack{
+                Picker("Book genre", selection: $bookgenre) {
+                    Text("Fiction").tag(0)
+                    Text("Nonfiction").tag(1)
+                }
+                .pickerStyle(.segmented)
+                .colorMultiply(.accentColor)
+                .font(.custom("Cairo", size: 15))
                 
+                List {
+                    
+                }
+                .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
             }
-            .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
         }
         .padding()
     }
