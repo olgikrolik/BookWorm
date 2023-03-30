@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct BookWormApp: App {
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "Cairo" , size: 34)!]
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -11,6 +11,7 @@
 		63AC855829D61B7A00874E1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC855729D61B7A00874E1C /* ContentView.swift */; };
 		63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AC855929D61B7C00874E1C /* Assets.xcassets */; };
 		63AC855D29D61B7C00874E1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AC855C29D61B7C00874E1C /* Preview Assets.xcassets */; };
+		63AC856729D626E500874E1C /* Cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63AC856629D626E500874E1C /* Cairo.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,8 @@
 		63AC855729D61B7A00874E1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		63AC855929D61B7C00874E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AC855C29D61B7C00874E1C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		63AC856529D623C100874E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63AC856629D626E500874E1C /* Cairo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cairo.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +54,11 @@
 		63AC855429D61B7A00874E1C /* BookWorm */ = {
 			isa = PBXGroup;
 			children = (
+				63AC856529D623C100874E1C /* Info.plist */,
 				63AC855529D61B7A00874E1C /* BookWormApp.swift */,
 				63AC855729D61B7A00874E1C /* ContentView.swift */,
 				63AC855929D61B7C00874E1C /* Assets.xcassets */,
+				63AC856329D6225B00874E1C /* Font */,
 				63AC855B29D61B7C00874E1C /* Preview Content */,
 			);
 			path = BookWorm;
@@ -65,6 +70,14 @@
 				63AC855C29D61B7C00874E1C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		63AC856329D6225B00874E1C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				63AC856629D626E500874E1C /* Cairo.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AC855D29D61B7C00874E1C /* Preview Assets.xcassets in Resources */,
+				63AC856729D626E500874E1C /* Cairo.ttf in Resources */,
 				63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +284,7 @@
 				DEVELOPMENT_TEAM = H24Q767P7R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookWorm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +314,7 @@
 				DEVELOPMENT_TEAM = H24Q767P7R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookWorm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
