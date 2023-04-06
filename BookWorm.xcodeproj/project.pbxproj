@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6352E17B29DE85D40026074F /* BestsellersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352E17A29DE85D40026074F /* BestsellersManager.swift */; };
 		63AC855629D61B7A00874E1C /* BookWormApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC855529D61B7A00874E1C /* BookWormApp.swift */; };
 		63AC855829D61B7A00874E1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC855729D61B7A00874E1C /* ContentView.swift */; };
 		63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AC855929D61B7C00874E1C /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6352E17A29DE85D40026074F /* BestsellersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellersManager.swift; sourceTree = "<group>"; };
 		63AC855229D61B7A00874E1C /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AC855529D61B7A00874E1C /* BookWormApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWormApp.swift; sourceTree = "<group>"; };
 		63AC855729D61B7A00874E1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +39,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6352E17829DE857D0026074F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6352E17A29DE85D40026074F /* BestsellersManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6352E17929DE858C0026074F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63AC855729D61B7A00874E1C /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		63AC854929D61B7A00874E1C = {
 			isa = PBXGroup;
 			children = (
@@ -58,7 +76,8 @@
 			children = (
 				63AC856529D623C100874E1C /* Info.plist */,
 				63AC855529D61B7A00874E1C /* BookWormApp.swift */,
-				63AC855729D61B7A00874E1C /* ContentView.swift */,
+				6352E17929DE858C0026074F /* Views */,
+				6352E17829DE857D0026074F /* Model */,
 				63AC855929D61B7C00874E1C /* Assets.xcassets */,
 				63AC856329D6225B00874E1C /* Font */,
 				63AC855B29D61B7C00874E1C /* Preview Content */,
@@ -157,6 +176,7 @@
 			files = (
 				63AC855829D61B7A00874E1C /* ContentView.swift in Sources */,
 				63AC855629D61B7A00874E1C /* BookWormApp.swift in Sources */,
+				6352E17B29DE85D40026074F /* BestsellersManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
