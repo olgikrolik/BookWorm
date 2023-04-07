@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @State private var bookgenre = 0
     
+    var bestsellersManager = BestsellersManager()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -47,6 +49,9 @@ struct ContentView: View {
                 }
             }
             .padding()
+            .onAppear {
+                self.bestsellersManager.fetchData()
+            }
         }
     }
 
