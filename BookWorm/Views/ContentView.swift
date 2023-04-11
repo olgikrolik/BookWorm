@@ -9,9 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var bestsellersManager = BestsellersManager()
     @State private var bookgenre = 0
-    
-    var bestsellersManager = BestsellersManager()
     
     var body: some View {
         NavigationView {
@@ -42,10 +41,18 @@ struct ContentView: View {
                     
                 }
                 
-                    List {
+                List(bestsellersManager.booksData) { book in
+                    HStack {
+                        Text(String(book.rank))
                         
+                        VStack {
+                            Text(String(book.title))
+                            Text(String(book.author))
+                            Text(String(book.description))
+                        }
                     }
-                    .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
+                }
+                .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
                 }
             }
             .padding()

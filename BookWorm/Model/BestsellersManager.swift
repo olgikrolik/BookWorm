@@ -7,7 +7,9 @@
 
 import Foundation
 
-class BestsellersManager {
+class BestsellersManager: ObservableObject {
+    
+    @Published var booksData = [Book]()
     
     func fetchData() {
         if let url = URL(string: "https://api.nytimes.com/svc/books/v3/lists/current/trade-fiction-paperback.json?api-key=1NLFuQmHxAXMm4A7BtJo3t6hAtE5WqjG") {
@@ -18,7 +20,9 @@ class BestsellersManager {
                     if let safedata = data {
                         do {
                             let decodedData = try decoder.decode(BestsellersData.self, from: safedata)
-                            print(decodedData.results.books[0].description) 
+                            DispatchQueue.main.async {
+                                self.booksData = decodedData.results.books
+                            }
                         } catch {
                             print(error)
                         }

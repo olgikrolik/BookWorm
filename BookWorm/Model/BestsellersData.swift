@@ -14,14 +14,24 @@ struct BestsellersData: Decodable {
 struct Results: Decodable {
     let list_name_encoded: String
     let published_date: String
-    let books: [Books]
+    let books: [Book]
 }
 
-struct Books: Decodable {
+
+struct Book: Decodable, Identifiable {
+    let id = UUID()
     let rank: Int
     let title: String
     let author: String
     let description: String
-    let book_image: String
+    let bookImageURL: URL
+    
+    enum CodingKeys: String, CodingKey {
+        case rank = "rank"
+        case title = "title"
+        case author = "author"
+        case description = "description"
+        case bookImageURL = "book_image"
+    }
 }
 
