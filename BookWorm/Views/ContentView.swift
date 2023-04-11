@@ -31,6 +31,7 @@ struct ContentView: View {
                     }
                     
                     Label("April 9, 2023", image: "")
+                        .padding()
                         .font(.custom("Cairo-Light", size: 13))
                     
                     Button {
@@ -43,14 +44,23 @@ struct ContentView: View {
                 
                 List(bestsellersManager.booksData) { book in
                     HStack {
-                        Text(String(book.rank))
-                        
                         VStack {
-                            Text(String(book.title))
-                            Text(String(book.author))
-                            Text(String(book.description))
+                            Text(String(book.rank))
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Cairo-Light", size: 36))
+                            Spacer()
                         }
-
+                        
+                        VStack(alignment: .leading) {
+                            Text(String(book.title))
+                                .font(.custom("Cairo", size: 17))
+                            Text("by \(book.author)")
+                                .font(.custom("Cairo-Light", size: 15))
+                            Text(String(book.description))
+                                .font(.custom("Cairo", size: 13))
+                        }
+                        
+                        Spacer()
                         AsyncImage(url: book.bookImageURL) { image in
                             image.resizable()
                         } placeholder: {
@@ -61,6 +71,7 @@ struct ContentView: View {
                     }
                 }
                 .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
+                .listStyle(.plain)
                 }
             }
             .padding()
