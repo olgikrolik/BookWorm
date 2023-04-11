@@ -50,6 +50,14 @@ struct ContentView: View {
                             Text(String(book.author))
                             Text(String(book.description))
                         }
+
+                        AsyncImage(url: book.bookImageURL) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 70, height: 115)
+                        
                     }
                 }
                 .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
