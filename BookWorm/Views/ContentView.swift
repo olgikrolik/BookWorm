@@ -21,8 +21,8 @@ struct ContentView: View {
                 }
                 .pickerStyle(.segmented)
                 .colorMultiply(.accentColor)
-                .font(.custom("Cairo-Light", size: 15))
-                
+                .font(.custom("Montserrat-Regular", size: 13))
+
                 HStack {
                     Button {
                         print("left button was tapped")
@@ -30,10 +30,10 @@ struct ContentView: View {
                         Image(systemName: "arrowtriangle.backward")
                     }
                     
-                    Label("April 9, 2023", image: "")
+                    Text("April 9, 2023")
                         .padding()
-                        .font(.custom("Cairo-Light", size: 13))
-                    
+                        .font(.custom("Montserrat-Light", size: 13))
+
                     Button {
                         print("right button was tapped")
                     } label: {
@@ -47,17 +47,19 @@ struct ContentView: View {
                         VStack {
                             Text(String(book.rank))
                                 .foregroundColor(.accentColor)
-                                .font(.custom("Cairo-Light", size: 36))
+                                .font(.custom("Montserrat-Light", size: 36))
                             Spacer()
                         }
-                        
                         VStack(alignment: .leading) {
                             Text(String(book.title))
-                                .font(.custom("Cairo", size: 17))
+                                .font(.custom("Montserrat-Regular", size: 17))
+                                .padding(.top, 5)
                             Text("by \(book.author)")
-                                .font(.custom("Cairo-Light", size: 15))
+                                .font(.custom("Montserrat-Light", size: 15))
                             Text(String(book.description))
-                                .font(.custom("Cairo", size: 13))
+                                .font(.custom("Montserrat-Regular", size: 13))
+                                .padding(.top, 3)
+                            Spacer()
                         }
                         
                         Spacer()

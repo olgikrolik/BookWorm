@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6352E17B29DE85D40026074F /* BestsellersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352E17A29DE85D40026074F /* BestsellersManager.swift */; };
 		6352E17D29DFDA530026074F /* BestsellersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352E17C29DFDA530026074F /* BestsellersData.swift */; };
+		6386707229E6741800C5D45B /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6386707129E6741800C5D45B /* Montserrat-Light.ttf */; };
+		6386707429E6742400C5D45B /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6386707329E6742400C5D45B /* Montserrat-Regular.ttf */; };
+		6386707629E6752300C5D45B /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6386707529E6752300C5D45B /* Montserrat-ExtraLight.ttf */; };
+		6386707829E6753300C5D45B /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6386707729E6753300C5D45B /* Montserrat-Thin.ttf */; };
 		63AC855629D61B7A00874E1C /* BookWormApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC855529D61B7A00874E1C /* BookWormApp.swift */; };
 		63AC855829D61B7A00874E1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC855729D61B7A00874E1C /* ContentView.swift */; };
 		63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AC855929D61B7C00874E1C /* Assets.xcassets */; };
@@ -20,6 +24,10 @@
 /* Begin PBXFileReference section */
 		6352E17A29DE85D40026074F /* BestsellersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellersManager.swift; sourceTree = "<group>"; };
 		6352E17C29DFDA530026074F /* BestsellersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellersData.swift; sourceTree = "<group>"; };
+		6386707129E6741800C5D45B /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		6386707329E6742400C5D45B /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		6386707529E6752300C5D45B /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		6386707729E6753300C5D45B /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		63AC855229D61B7A00874E1C /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AC855529D61B7A00874E1C /* BookWormApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWormApp.swift; sourceTree = "<group>"; };
 		63AC855729D61B7A00874E1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 		63AC856329D6225B00874E1C /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				6386707729E6753300C5D45B /* Montserrat-Thin.ttf */,
+				6386707529E6752300C5D45B /* Montserrat-ExtraLight.ttf */,
+				6386707129E6741800C5D45B /* Montserrat-Light.ttf */,
+				6386707329E6742400C5D45B /* Montserrat-Regular.ttf */,
 				63AC856629D626E500874E1C /* Cairo.ttf */,
 				63AC856829D63D8200874E1C /* Cairo-Light.ttf */,
 			);
@@ -163,9 +175,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6386707429E6742400C5D45B /* Montserrat-Regular.ttf in Resources */,
+				6386707229E6741800C5D45B /* Montserrat-Light.ttf in Resources */,
 				63AC855D29D61B7C00874E1C /* Preview Assets.xcassets in Resources */,
+				6386707629E6752300C5D45B /* Montserrat-ExtraLight.ttf in Resources */,
 				63AC856729D626E500874E1C /* Cairo.ttf in Resources */,
 				63AC856929D63D8200874E1C /* Cairo-Light.ttf in Resources */,
+				6386707829E6753300C5D45B /* Montserrat-Thin.ttf in Resources */,
 				63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
