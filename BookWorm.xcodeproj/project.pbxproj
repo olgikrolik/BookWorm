@@ -17,8 +17,6 @@
 		63AC855829D61B7A00874E1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC855729D61B7A00874E1C /* ContentView.swift */; };
 		63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AC855929D61B7C00874E1C /* Assets.xcassets */; };
 		63AC855D29D61B7C00874E1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AC855C29D61B7C00874E1C /* Preview Assets.xcassets */; };
-		63AC856729D626E500874E1C /* Cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63AC856629D626E500874E1C /* Cairo.ttf */; };
-		63AC856929D63D8200874E1C /* Cairo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63AC856829D63D8200874E1C /* Cairo-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +32,6 @@
 		63AC855929D61B7C00874E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AC855C29D61B7C00874E1C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		63AC856529D623C100874E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		63AC856629D626E500874E1C /* Cairo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cairo.ttf; sourceTree = "<group>"; };
-		63AC856829D63D8200874E1C /* Cairo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +107,6 @@
 				6386707529E6752300C5D45B /* Montserrat-ExtraLight.ttf */,
 				6386707129E6741800C5D45B /* Montserrat-Light.ttf */,
 				6386707329E6742400C5D45B /* Montserrat-Regular.ttf */,
-				63AC856629D626E500874E1C /* Cairo.ttf */,
-				63AC856829D63D8200874E1C /* Cairo-Light.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -179,8 +173,6 @@
 				6386707229E6741800C5D45B /* Montserrat-Light.ttf in Resources */,
 				63AC855D29D61B7C00874E1C /* Preview Assets.xcassets in Resources */,
 				6386707629E6752300C5D45B /* Montserrat-ExtraLight.ttf in Resources */,
-				63AC856729D626E500874E1C /* Cairo.ttf in Resources */,
-				63AC856929D63D8200874E1C /* Cairo-Light.ttf in Resources */,
 				6386707829E6753300C5D45B /* Montserrat-Thin.ttf in Resources */,
 				63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */,
 			);

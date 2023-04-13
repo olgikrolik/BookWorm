@@ -12,11 +12,19 @@ struct BestsellersData: Decodable {
 }
 
 struct Results: Decodable {
-    let list_name_encoded: String
-    let published_date: String
+    let listPublishedDate: String
+    let previousPublishedDate: String
+    let nextPublishedDate: String
     let books: [Book]
+    
+    enum CodingKeys: String, CodingKey {
+        case listPublishedDate = "published_date"
+        case previousPublishedDate = "previous_published_date"
+        case nextPublishedDate = "next_published_date"
+        case books = "books"
+    }
+    
 }
-
 
 struct Book: Decodable, Identifiable {
     let id = UUID()

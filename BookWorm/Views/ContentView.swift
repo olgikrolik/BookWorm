@@ -10,30 +10,35 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var bestsellersManager = BestsellersManager()
-    @State private var bookgenre = 0
+    @State private var bookGenre = 0
     
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Book genre", selection: $bookgenre) {
-                    Text("Fiction").tag(0)
-                    Text("Nonfiction").tag(1)
+                Picker("Book genre", selection: $bookGenre) {
+                    Text("Fiction")
+                        .tag(0)
+                    Text("Nonfiction")
+                        .tag(1)
                 }
                 .pickerStyle(.segmented)
                 .colorMultiply(.accentColor)
-                .font(.custom("Montserrat-Regular", size: 13))
-
+                
                 HStack {
                     Button {
-                        print("left button was tapped")
+                        if bookGenre == 0 {
+                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.previousListDateData)
+                        } else {
+                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.previousListDateData)
+                        }
                     } label: {
                         Image(systemName: "arrowtriangle.backward")
                     }
                     
-                    Text("April 9, 2023")
+                    Text(bestsellersManager.listDateData)
                         .padding()
                         .font(.custom("Montserrat-Light", size: 13))
-
+                    
                     Button {
                         print("right button was tapped")
                     } label: {
@@ -41,8 +46,7 @@ struct ContentView: View {
                     }
                     
                 }
-                
-                List(bestsellersManager.booksData) { book in
+                List(bestsellersManager.bookData) { book in
                     HStack {
                         VStack {
                             Text(String(book.rank))
@@ -50,6 +54,7 @@ struct ContentView: View {
                                 .font(.custom("Montserrat-Light", size: 36))
                             Spacer()
                         }
+                        
                         VStack(alignment: .leading) {
                             Text(String(book.title))
                                 .font(.custom("Montserrat-Regular", size: 17))
@@ -61,7 +66,6 @@ struct ContentView: View {
                                 .padding(.top, 3)
                             Spacer()
                         }
-                        
                         Spacer()
                         AsyncImage(url: book.bookImageURL) { image in
                             image.resizable()
@@ -74,14 +78,21 @@ struct ContentView: View {
                 }
                 .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
                 .listStyle(.plain)
-                }
             }
-            .padding()
-            .onAppear {
-                self.bestsellersManager.fetchData()
+        }
+        .padding()
+        .onAppear {
+            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: "current")
+        }
+        .onChange(of: bookGenre) { value in
+            if bookGenre == 0 {
+                self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: "")
+            } else {
+                self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: "")
             }
         }
     }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
