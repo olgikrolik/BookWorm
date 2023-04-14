@@ -10,12 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var bestsellersManager = BestsellersManager()
-    @State private var bookGenre = 0
+    @State private var selectedBookGenre = 0
     
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Book genre", selection: $bookGenre) {
+                Picker("Book genre", selection: $selectedBookGenre) {
                     Text("Fiction")
                         .tag(0)
                     Text("Nonfiction")
@@ -26,7 +26,7 @@ struct ContentView: View {
                 
                 HStack {
                     Button {
-                        if bookGenre == 0 {
+                        if selectedBookGenre == 0 {
                             self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.previousListDateData)
                         } else {
                             self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.previousListDateData)
@@ -40,7 +40,11 @@ struct ContentView: View {
                         .font(.custom("Montserrat-Light", size: 13))
                     
                     Button {
-                        print("right button was tapped")
+                        if selectedBookGenre == 0 {
+                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.nextListDateData)
+                        } else {
+                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.nextListDateData)
+                        }
                     } label: {
                         Image(systemName: "arrowtriangle.forward")
                     }
@@ -51,7 +55,8 @@ struct ContentView: View {
                         VStack {
                             Text(String(book.rank))
                                 .foregroundColor(.accentColor)
-                                .font(.custom("Montserrat-Light", size: 36))
+                                .font(.custom("Montserrat-Light", size: 34))
+                                .frame(width: 35)
                             Spacer()
                         }
                         
@@ -84,8 +89,8 @@ struct ContentView: View {
         .onAppear {
             self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: "current")
         }
-        .onChange(of: bookGenre) { value in
-            if bookGenre == 0 {
+        .onChange(of: selectedBookGenre) { value in
+            if selectedBookGenre == 0 {
                 self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: "")
             } else {
                 self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: "")
