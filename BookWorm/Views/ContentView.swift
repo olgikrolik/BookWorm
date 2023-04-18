@@ -96,6 +96,9 @@ struct ContentView: View {
                 self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: "")
             }
         }
+        .alert(isPresented: $bestsellersManager.showError) {
+            Alert(title: Text("Error"), message: Text("The maximum number of requests has been reached. Please wait 1 minute."), dismissButton: .default(Text("OK")))
+        }
     }
 }
 
