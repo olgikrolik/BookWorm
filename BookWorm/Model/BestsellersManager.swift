@@ -10,10 +10,11 @@ import Foundation
 class BestsellersManager: ObservableObject {
     
     @Published var bookData = [Book]()
-    @Published var listDateData = ""
-    @Published var previousListDateData = ""
-    @Published var nextListDateData = ""
+    @Published var formattedListDate = ""
     @Published var showError = false
+    var previousListDate = ""
+    var nextListDate = ""
+    var listDateData = ""
     
     func fetchBestsellers(listGenre: String, bestsellersListDate: String) {
         if let url = URL(string: "https://api.nytimes.com/svc/books/v3/lists/\(bestsellersListDate)/\(listGenre).json?api-key=1NLFuQmHxAXMm4A7BtJo3t6hAtE5WqjG") {
@@ -30,10 +31,17 @@ class BestsellersManager: ObservableObject {
                             do {
                                 let decodedData = try decoder.decode(BestsellersData.self, from: safedata)
                                 DispatchQueue.main.async {
+                                    
                                     self.bookData = decodedData.results.books
                                     self.listDateData = decodedData.results.listPublishedDate
-                                    self.previousListDateData = decodedData.results.previousPublishedDate
-                                    self.nextListDateData = decodedData.results.nextPublishedDate
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "y-MM-dd"
+                                    if let date = dateFormatter.date(from: self.listDateData) {
+                                        dateFormatter.dateFormat = "MMM d, Y"
+                                        self.formattedListDate = dateFormatter.string(from: date)
+                                    }
+                                    self.previousListDate = decodedData.results.previousPublishedDate
+                                    self.nextListDate = decodedData.results.nextPublishedDate
                                 }
                             } catch {
                                 print(error.localizedDescription)

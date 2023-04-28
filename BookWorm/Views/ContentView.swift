@@ -12,6 +12,7 @@ struct ContentView: View {
     @ObservedObject var bestsellersManager = BestsellersManager()
     @State private var selectedBookGenre = 0
     
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -27,23 +28,23 @@ struct ContentView: View {
                 HStack {
                     Button {
                         if selectedBookGenre == 0 {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.previousListDateData)
+                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.previousListDate)
                         } else {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.previousListDateData)
+                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.previousListDate)
                         }
                     } label: {
                         Image(systemName: "arrowtriangle.backward")
                     }
                     
-                    Text(bestsellersManager.listDateData)
+                    Text(bestsellersManager.formattedListDate)
                         .padding()
                         .font(.custom("Montserrat-Light", size: 13))
                     
                     Button {
                         if selectedBookGenre == 0 {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.nextListDateData)
+                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.nextListDate)
                         } else {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.nextListDateData)
+                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.nextListDate)
                         }
                     } label: {
                         Image(systemName: "arrowtriangle.forward")
