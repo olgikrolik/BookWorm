@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct BestsellersListView: View {
     
     @ObservedObject var bestsellersManager = BestsellersManager()
     @State private var selectedBookGenre = 0
@@ -105,6 +105,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        BestsellersListView()
     }
 }
