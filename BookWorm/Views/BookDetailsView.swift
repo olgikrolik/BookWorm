@@ -43,6 +43,31 @@ struct BookDetailsView: View {
                 }
                 .frame(maxWidth: 300)
                 .padding(.top, 5)
+                
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 135, height: 50)
+                            .overlay(
+                                Text("Buy")
+                                    .foregroundColor(.black)
+                            )
+                    }
+                    Button {
+                        
+                    } label: {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 135, height: 50)
+                            .overlay(
+                                Text("Preview")
+                                    .foregroundColor(.black)
+                            )
+                    }
+                }
+                .padding(.top, 20)
+                
                 Spacer()
             }
         }
