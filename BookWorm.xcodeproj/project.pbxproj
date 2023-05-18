@@ -59,10 +59,18 @@
 		6352E17929DE858C0026074F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				63AC855729D61B7A00874E1C /* BestsellersListView.swift */,
-				634A3A052A023407005EF9E5 /* BookDetailsView.swift */,
+				63673A702A0E16E000CD2D4D /* Screens */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		63673A702A0E16E000CD2D4D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				634A3A052A023407005EF9E5 /* BookDetailsView.swift */,
+				63AC855729D61B7A00874E1C /* BestsellersListView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		63AC854929D61B7A00874E1C = {

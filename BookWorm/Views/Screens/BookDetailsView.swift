@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BookDetailsView: View {
+    
+    @State private var text: String = ""
+    
     var body: some View {
         
         ZStack {
@@ -73,13 +76,12 @@ struct BookDetailsView: View {
                     }
                     .padding(.top, 20)
                     
-                    Text("Before It Ends with Us, it started with Atlas. Colleen Hoover tells fan favorite Atlas’s side of the story and shares what comes next in this long-anticipated sequel to the “glorious and touching” (USA TODAY) #1 New York Times bestseller It Ends with Us. Lily and her ex-husband, Ryle, have just settled into a civil coparenting rhythm when she suddenly bumps into her first love, Atlas, again. After nearly two years separated, she is elated that for once, time is on their side, and she immediately says yes when Atlas asks her on a date. But her excitement is quickly hampered by the knowledge that, though they")
-                        .frame(width: 310)
-                        .font(.custom("Montserrat-Light", size: 14))
-                        .padding(.top, 20)
-                    
-                    
-                    Spacer()
+                            Text("Before It Ends with Us, it started with Atlas. Colleen Hoover tells fan favorite Atlas’s side of the story and shares what comes next in this long-anticipated sequel to the “glorious and touching” (USA TODAY) #1 New York Times bestseller It Ends with Us. Lily and her ex-husband, Ryle, have just settled into a civil coparenting rhythm when she suddenly bumps into her first love, Atlas, again. After nearly two years separated, she is elated that for once, time is on their side, and she immediately says yes when Atlas asks her on a date. But her excitement is quickly hampered by the knowledge that, though they")
+                                .multilineTextAlignment(.leading)
+                                .frame(width: 350)
+                                .font(.custom("Montserrat-ExtraLight", size: 14))
+                                .padding(.top, 20)
+                    }
                 }
             }
         }
@@ -94,7 +96,7 @@ struct BookDetailsView: View {
         return definitionAttributedString + descriptionAttributedString
     }
     
-}
+
 
 struct BookDetailsView_Previews: PreviewProvider {
     static var previews: some View {
