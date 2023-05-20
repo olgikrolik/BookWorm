@@ -3,4 +3,70 @@
    uuid = "C6FB37DE-9093-46B3-B0DB-C1C6EE1248E5"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BBEA56B-D100-4AC7-BE4D-07A0F3A7E232"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWorm/Model/BookDetailsManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "fetchBookDetails(bookTitle:bookAuthor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA4F286E-9842-4EB1-92D8-971BFBDA78E8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookWorm/Model/BookDetailsManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "fetchBookDetails(bookTitle:bookAuthor:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA4F286E-9842-4EB1-92D8-971BFBDA78E8 - feb1d88c11a35cce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BookWorm.BookDetailsManager.fetchBookDetails(bookTitle: Swift.String, bookAuthor: Swift.String) -&gt; ()"
+                  moduleName = "BookWorm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olgikrolik/Desktop/App%20BookWorm/BookWorm/BookWorm/Model/BookDetailsManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "2436">
+               </Location>
+               <Location
+                  uuid = "BA4F286E-9842-4EB1-92D8-971BFBDA78E8 - feb1d88c11a35caf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BookWorm.BookDetailsManager.fetchBookDetails(bookTitle: Swift.String, bookAuthor: Swift.String) -&gt; ()"
+                  moduleName = "BookWorm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olgikrolik/Desktop/App%20BookWorm/BookWorm/BookWorm/Model/BookDetailsManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "2856">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

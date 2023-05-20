@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookDetailsView: View {
     
+    @ObservedObject var bookDetailsManager = BookDetailsManager()
     @State private var text: String = ""
     
     var body: some View {
@@ -78,12 +79,16 @@ struct BookDetailsView: View {
                     
                             Text("Before It Ends with Us, it started with Atlas. Colleen Hoover tells fan favorite Atlas’s side of the story and shares what comes next in this long-anticipated sequel to the “glorious and touching” (USA TODAY) #1 New York Times bestseller It Ends with Us. Lily and her ex-husband, Ryle, have just settled into a civil coparenting rhythm when she suddenly bumps into her first love, Atlas, again. After nearly two years separated, she is elated that for once, time is on their side, and she immediately says yes when Atlas asks her on a date. But her excitement is quickly hampered by the knowledge that, though they")
                                 .multilineTextAlignment(.leading)
-                                .frame(width: 350)
                                 .font(.custom("Montserrat-ExtraLight", size: 14))
                                 .padding(.top, 20)
+                                .padding(.leading, 30)
+                                .padding(.trailing, 30)
                     }
                 }
             }
+        .onAppear {
+            self.bookDetailsManager.fetchBookDetails(bookTitle: "It+starts+with+us", bookAuthor: "Colleen+Hoover")
+        }
         }
     }
     func mergeDefinitionAndDescription(definition: String, description: String) -> AttributedString {
