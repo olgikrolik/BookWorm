@@ -14,7 +14,7 @@ struct BestsellersListView: View {
     
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Picker("Book genre", selection: $selectedBookGenre) {
                     Text("Fiction")
@@ -52,35 +52,41 @@ struct BestsellersListView: View {
                     
                 }
                 List(bestsellersManager.bookData) { book in
-                    HStack {
-                        VStack {
-                            Text(String(book.rank))
-                                .foregroundColor(.accentColor)
-                                .font(.custom("Montserrat-Light", size: 34))
-                                .frame(width: 35)
+                    NavigationLink(value: book) {
+                        HStack {
+                            VStack {
+                                Text(String(book.rank))
+                                    .foregroundColor(.accentColor)
+                                    .font(.custom("Montserrat-Light", size: 34))
+                                    .frame(width: 35)
+                                Spacer()
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Text(String(book.title))
+                                    .font(.custom("Montserrat-Regular", size: 17))
+                                    .padding(.top, 5)
+                                Text("by \(book.author)")
+                                    .font(.custom("Montserrat-Light", size: 15))
+                                Text(String(book.description))
+                                    .font(.custom("Montserrat-Regular", size: 13))
+                                    .padding(.top, 3)
+                                Spacer()
+                            }
                             Spacer()
+                            AsyncImage(url: book.bookImageURL) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 70, height: 115)
+                            
                         }
-                        
-                        VStack(alignment: .leading) {
-                            Text(String(book.title))
-                                .font(.custom("Montserrat-Regular", size: 17))
-                                .padding(.top, 5)
-                            Text("by \(book.author)")
-                                .font(.custom("Montserrat-Light", size: 15))
-                            Text(String(book.description))
-                                .font(.custom("Montserrat-Regular", size: 13))
-                                .padding(.top, 3)
-                            Spacer()
-                        }
-                        Spacer()
-                        AsyncImage(url: book.bookImageURL) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 70, height: 115)
-                        
                     }
+                }
+                .navigationDestination(for: Book.self) { book in
+//                    BookDetailsView(book: book)
+                    BookDetailsView()
                 }
                 .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
                 .listStyle(.plain)

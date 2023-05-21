@@ -26,7 +26,7 @@ struct Results: Decodable {
     
 }
 
-struct Book: Decodable, Identifiable {
+struct Book: Decodable, Identifiable, Hashable {
     let id = UUID()
     let rank: Int
     let title: String

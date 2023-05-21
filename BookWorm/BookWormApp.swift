@@ -16,8 +16,8 @@ struct BookWormApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            BestsellersListView()
-            BookDetailsView()
+            BestsellersListView()
+//            BookDetailsView()
         }
     }
 }
