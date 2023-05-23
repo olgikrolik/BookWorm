@@ -10,7 +10,8 @@ import Foundation
 class BookDetailsManager: ObservableObject {
     
     func fetchBookDetails(bookTitle: String, bookAuthor: String) {
-        if let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=intitle:\(bookTitle)+inauthor:\(bookAuthor)&key=AIzaSyBO7kh2ZpihDXbvsuzT5A9HEunlE8wSrDw") {
+        let (titleWithPlusBetweenWords, authorWithPlusBetweenWords) = addPlusBetweenWords(title: bookTitle, author: bookAuthor)
+        if let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=intitle:\(titleWithPlusBetweenWords)+inauthor:\(authorWithPlusBetweenWords)&key=AIzaSyBO7kh2ZpihDXbvsuzT5A9HEunlE8wSrDw") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if error == nil {
@@ -33,6 +34,12 @@ class BookDetailsManager: ObservableObject {
             }
             task.resume()
         }
+    }
+    func addPlusBetweenWords(title: String, author: String) -> (titleWithPlusBetweenWords: String, authorWithPlusBetweenWords: String) {
+        let titleWithPlusBetweenWords = title.replacingOccurrences(of: " ", with: "+")
+        let authorWithPlusBetweenWords = author.replacingOccurrences(of: " ", with: "+")
+        
+        return (titleWithPlusBetweenWords, authorWithPlusBetweenWords)
     }
     
 }

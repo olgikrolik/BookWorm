@@ -10,7 +10,18 @@ import SwiftUI
 struct BookDetailsView: View {
     
     @ObservedObject var bookDetailsManager = BookDetailsManager()
-    @State private var text: String = ""
+    
+    let title: String
+    let author: String
+    let bookImageURL: URL
+    
+//    init(title: String, author: String, bookImageURL: URL) {
+//        self.title = title
+//        self.author = author
+//        self.bookImageURL = bookImageURL
+//
+//
+//    }
     
     var body: some View {
         
@@ -87,7 +98,7 @@ struct BookDetailsView: View {
                 }
             }
         .onAppear {
-            self.bookDetailsManager.fetchBookDetails(bookTitle: "It+starts+with+us", bookAuthor: "Colleen+Hoover")
+            self.bookDetailsManager.fetchBookDetails(bookTitle: title, bookAuthor: author)
         }
         }
     }
@@ -100,12 +111,9 @@ struct BookDetailsView: View {
         
         return definitionAttributedString + descriptionAttributedString
     }
-    
-
 
 struct BookDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetailsView()
-
+        BookDetailsView(title: "", author: "", bookImageURL: URL(string: "https://www.google.com/search?q=book&rlz=1C5CHFA_enPL1022PL1022&sxsrf=APwXEddCNZqSRlwH57c4i6N-9Gneb2glag:1684736157260&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjXiMaho4j_AhUOlosKHTbHDYYQ_AUoAXoECAEQAw&biw=1440&bih=821&dpr=2#imgrc=ubeJCyYL7jj5jM")!)
     }
 }

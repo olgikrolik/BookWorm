@@ -85,8 +85,7 @@ struct BestsellersListView: View {
                     }
                 }
                 .navigationDestination(for: Book.self) { book in
-//                    BookDetailsView(book: book)
-                    BookDetailsView()
+                    BookDetailsView(title: book.title, author: book.author, bookImageURL: book.bookImageURL)
                 }
                 .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
                 .listStyle(.plain)
