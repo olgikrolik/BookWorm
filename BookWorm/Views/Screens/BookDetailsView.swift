@@ -85,8 +85,9 @@ struct BookDetailsView: View {
     @ViewBuilder
     var bookTitle: some View {
         Text(title)
-            .foregroundColor(.accentColor)
+            .foregroundColor(.black)
             .font(.custom("Montserrat-Regular", size: 20))
+            .multilineTextAlignment(.center)
             .padding(.top, 20)
     }
     
@@ -97,17 +98,17 @@ struct BookDetailsView: View {
     
     @ViewBuilder
     var bookISBN: some View {
-        Text(mergeDefinitionAndDescription(definition: "ISBN: ", description: "\(self.bookDetailsManager.bookInfo?.ISBNIdentifiers[0].ISBN ?? "lack of ISBN"), \(self.bookDetailsManager.bookInfo?.ISBNIdentifiers[1].ISBN ?? "lack of ISBN")"))
+        Text(mergeDefinitionAndDescription(definition: "ISBN: ", description: bookDetailsManager.bookInfo.isbn))
     }
     
     @ViewBuilder
     var bookPageCount: some View {
-        Text(mergeDefinitionAndDescription(definition: "Page count: ", description: String(self.bookDetailsManager.bookInfo?.pageCount ?? 0)))
+        Text(mergeDefinitionAndDescription(definition: "Page count: ", description: bookDetailsManager.bookInfo.pageCount))
     }
     
     @ViewBuilder
     var bookPublishedDate: some View {
-        Text(mergeDefinitionAndDescription(definition: "Published date: ", description: self.bookDetailsManager.bookInfo?.publishedDate ?? "-"))
+        Text(mergeDefinitionAndDescription(definition: "Published date: ", description: bookDetailsManager.bookInfo.formattedPublishedDate))
     }
     
     @ViewBuilder
@@ -144,7 +145,7 @@ struct BookDetailsView: View {
     
     @ViewBuilder
     var bookDescription: some View {
-        Text(self.bookDetailsManager.bookInfo?.description ?? "lack of description")
+        Text(bookDetailsManager.bookInfo.description)
             .multilineTextAlignment(.leading)
             .font(.custom("Montserrat-ExtraLight", size: 14))
             .padding(.top, 20)

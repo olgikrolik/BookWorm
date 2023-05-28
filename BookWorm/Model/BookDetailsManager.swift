@@ -7,9 +7,16 @@
 
 import Foundation
 
+struct BookInfo {
+    let isbn: String
+    let pageCount: String
+    let formattedPublishedDate: String
+    let description: String
+}
+
 class BookDetailsManager: ObservableObject {
     
-    @Published var bookInfo: VolumeInfo?
+    @Published var bookInfo: BookInfo = BookInfo(isbn: "", pageCount: "", formattedPublishedDate: "", description: "")
     
     func fetchBookDetails(bookTitle: String, bookAuthor: String) {
         let (titleWithPlusBetweenWords, authorWithPlusBetweenWords) = addPlusBetweenWords(title: bookTitle, author: bookAuthor)
@@ -22,7 +29,44 @@ class BookDetailsManager: ObservableObject {
                         do {
                             let decodedData = try decoder.decode(BookDetailsData.self, from: safedata)
                             DispatchQueue.main.async {
-                                self.bookInfo = decodedData.items[0].volumeInfo
+                                let bookInfoApiData = decodedData.items[0].volumeInfo
+                                
+                                var isbn: String
+                                if bookInfoApiData.ISBNIdentifiers.isEmpty {
+                                    isbn = "unknown"
+                                } else {
+                                    isbn = bookInfoApiData.ISBNIdentifiers[0].ISBN ?? "unknown"
+                                }
+                                
+                                var pageCount: String
+                                if let unwrappedPageCount = bookInfoApiData.pageCount {
+                                    pageCount = String(unwrappedPageCount)
+                                } else {
+                                    pageCount = "unknown"
+                                }
+                                
+                                var formattedPublishedDate: String
+                                if let unwrappedPublishedDate = bookInfoApiData.publishedDate {
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "y-MM-dd"
+                                    if let date = dateFormatter.date(from: unwrappedPublishedDate) {
+                                        dateFormatter.dateFormat = "dd.MM.Y"
+                                        formattedPublishedDate = dateFormatter.string(from: date)
+                                    } else {
+                                        formattedPublishedDate = "unknown"
+                                    }
+                                } else {
+                                    formattedPublishedDate = "unknown"
+                                }
+                                
+                                var description: String
+                                if let unwrappedDescription = bookInfoApiData.description {
+                                    description = unwrappedDescription
+                                } else {
+                                    description = "unknown"
+                                }
+                                
+                                self.bookInfo = BookInfo(isbn: isbn, pageCount: pageCount, formattedPublishedDate: formattedPublishedDate, description: description)
                             }
                         } catch {
                             print(error)
@@ -40,5 +84,8 @@ class BookDetailsManager: ObservableObject {
         
         return (titleWithPlusBetweenWords, authorWithPlusBetweenWords)
     }
+    
+    
+    
     
 }
