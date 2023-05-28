@@ -40,7 +40,11 @@ class BookDetailsManager: ObservableObject {
                                 
                                 var pageCount: String
                                 if let unwrappedPageCount = bookInfoApiData.pageCount {
-                                    pageCount = String(unwrappedPageCount)
+                                    if unwrappedPageCount == 0 {
+                                        pageCount = "unknown"
+                                    } else {
+                                        pageCount = String(unwrappedPageCount)
+                                    }
                                 } else {
                                     pageCount = "unknown"
                                 }
