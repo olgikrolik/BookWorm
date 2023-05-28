@@ -90,8 +90,8 @@ struct BestsellersListView: View {
                 .navigationBarTitle(Text("Bestsellers"), displayMode: .large)
                 .listStyle(.plain)
             }
+            .padding()
         }
-        .padding()
         .onAppear {
             self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: "current")
         }

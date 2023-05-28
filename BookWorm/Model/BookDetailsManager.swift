@@ -9,6 +9,8 @@ import Foundation
 
 class BookDetailsManager: ObservableObject {
     
+    @Published var bookInfo: VolumeInfo?
+    
     func fetchBookDetails(bookTitle: String, bookAuthor: String) {
         let (titleWithPlusBetweenWords, authorWithPlusBetweenWords) = addPlusBetweenWords(title: bookTitle, author: bookAuthor)
         if let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=intitle:\(titleWithPlusBetweenWords)+inauthor:\(authorWithPlusBetweenWords)&key=AIzaSyBO7kh2ZpihDXbvsuzT5A9HEunlE8wSrDw") {
@@ -19,12 +21,9 @@ class BookDetailsManager: ObservableObject {
                     if let safedata = data {
                         do {
                             let decodedData = try decoder.decode(BookDetailsData.self, from: safedata)
-                            print(decodedData.items[0].volumeInfo.description)
-                            print(decodedData.items[0].volumeInfo.industryIdentifiers[0].identifier)
-                            print(decodedData.items[0].volumeInfo.industryIdentifiers[1].identifier)
-                            print(decodedData.items[0].volumeInfo.pageCount)
-                            print(decodedData.items[0].volumeInfo.previewLink)
-                            print(decodedData.items[0].volumeInfo.buyLink)
+                            DispatchQueue.main.async {
+                                self.bookInfo = decodedData.items[0].volumeInfo
+                            }
                         } catch {
                             print(error)
                         }

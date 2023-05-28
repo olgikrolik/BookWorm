@@ -16,14 +16,30 @@ struct Items: Decodable {
 }
 
 struct VolumeInfo: Decodable {
-    let publishedDate: String
-    let description: String
-    let pageCount: Int
+    let publishedDate: String?
+    let description: String?
+    let pageCount: Int?
     let previewLink: URL?
     let buyLink: URL?
-    let industryIdentifiers: [IndustryIdentifiers]
+    let ISBNIdentifiers: [ISBNIdentifiers]
+    
+    enum CodingKeys: String, CodingKey {
+        case publishedDate = "publishedDate"
+        case description = "description"
+        case pageCount = "pageCount"
+        case previewLink = "previewLink"
+        case buyLink = "buyLink"
+        case ISBNIdentifiers = "industryIdentifiers"
+        
+    }
 }
 
-struct IndustryIdentifiers : Decodable {
-    let identifier: String
+struct ISBNIdentifiers : Decodable {
+    let ISBN: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case ISBN = "identifier"
+    }
 }
+
+
