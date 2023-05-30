@@ -13,6 +13,7 @@ struct BookDetailsData: Decodable {
 
 struct Items: Decodable {
     let volumeInfo: VolumeInfo
+    let saleInfo: SaleInfo
 }
 
 struct VolumeInfo: Decodable {
@@ -20,7 +21,6 @@ struct VolumeInfo: Decodable {
     let description: String?
     let pageCount: Int?
     let previewLink: URL?
-    let buyLink: URL?
     let ISBNIdentifiers: [ISBNIdentifiers]
     
     enum CodingKeys: String, CodingKey {
@@ -28,10 +28,13 @@ struct VolumeInfo: Decodable {
         case description = "description"
         case pageCount = "pageCount"
         case previewLink = "previewLink"
-        case buyLink = "buyLink"
         case ISBNIdentifiers = "industryIdentifiers"
         
     }
+}
+
+struct SaleInfo: Decodable {
+    let buyLink: URL?
 }
 
 struct ISBNIdentifiers : Decodable {

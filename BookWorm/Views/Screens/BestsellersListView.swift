@@ -12,7 +12,6 @@ struct BestsellersListView: View {
     @ObservedObject var bestsellersManager = BestsellersManager()
     @State private var selectedBookGenre = 0
     
-    
     var body: some View {
         NavigationStack {
             VStack {

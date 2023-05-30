@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BookDetailsView: View {
     
-    @ObservedObject var bookDetailsManager = BookDetailsManager()
+    @StateObject var bookDetailsManager = BookDetailsManager()
+    @State private var showingWebSheet = false
     
     let title: String
     let author: String
@@ -32,7 +33,9 @@ struct BookDetailsView: View {
                     .padding(.top, 5)
                     
                     HStack {
-                        buyLinkButton
+                        if let urlBuyLink = bookDetailsManager.bookInfo.buyLink {
+                            buyLinkButton(url: urlBuyLink)
+                        }
                         previewLinkButton
                     }
                     .padding(.top, 20)
@@ -43,6 +46,9 @@ struct BookDetailsView: View {
         .onAppear {
             self.bookDetailsManager.fetchBookDetails(bookTitle: title, bookAuthor: author)
         }
+//        .sheet(isPresented: $showingWebSheet, content: {
+//            WebView(url: bookDetailsManager.bookInfo.buyLink!)
+//        })
     }
     
     
@@ -112,9 +118,9 @@ struct BookDetailsView: View {
     }
     
     @ViewBuilder
-    var buyLinkButton: some View {
+    func buyLinkButton(url: URL) -> some View {
         Button {
-            
+            showingWebSheet.toggle()
         } label: {
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(.accentColor)
@@ -125,6 +131,9 @@ struct BookDetailsView: View {
                         .font(.custom("Montserrat-Regular", size: 18))
                 )
         }
+        .sheet(isPresented: $showingWebSheet, content: {
+            WebView(url: url)
+        })
     }
     
     @ViewBuilder

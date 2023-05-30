@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63351F802A25C9EB00DC011D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63351F7F2A25C9EB00DC011D /* WebView.swift */; };
 		634A3A062A023407005EF9E5 /* BookDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634A3A052A023407005EF9E5 /* BookDetailsView.swift */; };
 		6352E17B29DE85D40026074F /* BestsellersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352E17A29DE85D40026074F /* BestsellersManager.swift */; };
 		6352E17D29DFDA530026074F /* BestsellersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352E17C29DFDA530026074F /* BestsellersData.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63351F7F2A25C9EB00DC011D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		634A3A052A023407005EF9E5 /* BookDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsView.swift; sourceTree = "<group>"; };
 		6352E17A29DE85D40026074F /* BestsellersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellersManager.swift; sourceTree = "<group>"; };
 		6352E17C29DFDA530026074F /* BestsellersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellersData.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				63AC855729D61B7A00874E1C /* BestsellersListView.swift */,
 				634A3A052A023407005EF9E5 /* BookDetailsView.swift */,
+				63351F7F2A25C9EB00DC011D /* WebView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63673A772A175D4300CD2D4D /* BookDetailsData.swift in Sources */,
+				63351F802A25C9EB00DC011D /* WebView.swift in Sources */,
 				63AC855829D61B7A00874E1C /* BestsellersListView.swift in Sources */,
 				63673A752A15F38700CD2D4D /* BookDetailsManager.swift in Sources */,
 				63AC855629D61B7A00874E1C /* BookWormApp.swift in Sources */,

@@ -12,11 +12,17 @@ struct BookInfo {
     let pageCount: String
     let formattedPublishedDate: String
     let description: String
+    let buyLink: URL?
+    let previewLink: URL?
 }
 
 class BookDetailsManager: ObservableObject {
     
-    @Published var bookInfo: BookInfo = BookInfo(isbn: "", pageCount: "", formattedPublishedDate: "", description: "")
+    @Published var bookInfo: BookInfo = BookInfo(isbn: "", pageCount: "", formattedPublishedDate: "", description: "", buyLink: nil, previewLink: nil)
+    
+    init() {
+        print("")
+    }
     
     func fetchBookDetails(bookTitle: String, bookAuthor: String) {
         let (titleWithPlusBetweenWords, authorWithPlusBetweenWords) = addPlusBetweenWords(title: bookTitle, author: bookAuthor)
@@ -30,6 +36,8 @@ class BookDetailsManager: ObservableObject {
                             let decodedData = try decoder.decode(BookDetailsData.self, from: safedata)
                             DispatchQueue.main.async {
                                 let bookInfoApiData = decodedData.items[0].volumeInfo
+                                let buyLink = decodedData.items[0].saleInfo.buyLink
+                                let previewLink = bookInfoApiData.previewLink
                                 
                                 var isbn: String
                                 if bookInfoApiData.ISBNIdentifiers.isEmpty {
@@ -70,7 +78,7 @@ class BookDetailsManager: ObservableObject {
                                     description = "unknown"
                                 }
                                 
-                                self.bookInfo = BookInfo(isbn: isbn, pageCount: pageCount, formattedPublishedDate: formattedPublishedDate, description: description)
+                                self.bookInfo = BookInfo(isbn: isbn, pageCount: pageCount, formattedPublishedDate: formattedPublishedDate, description: description, buyLink: buyLink, previewLink: previewLink)
                             }
                         } catch {
                             print(error)
