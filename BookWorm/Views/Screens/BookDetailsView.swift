@@ -10,7 +10,8 @@ import SwiftUI
 struct BookDetailsView: View {
     
     @StateObject var bookDetailsManager = BookDetailsManager()
-    @State private var showingWebSheet = false
+    @State private var showingBuyWebSheet = false
+    @State private var showingPreviewWebSheet = false
     
     let title: String
     let author: String
@@ -36,7 +37,9 @@ struct BookDetailsView: View {
                         if let urlBuyLink = bookDetailsManager.bookInfo.buyLink {
                             buyLinkButton(url: urlBuyLink)
                         }
-                        previewLinkButton
+                        if let urlPreviewLink = bookDetailsManager.bookInfo.previewLink {
+                            previewLinkButton(url: urlPreviewLink)
+                        }
                     }
                     .padding(.top, 20)
                     bookDescription
@@ -120,7 +123,7 @@ struct BookDetailsView: View {
     @ViewBuilder
     func buyLinkButton(url: URL) -> some View {
         Button {
-            showingWebSheet.toggle()
+            showingBuyWebSheet.toggle()
         } label: {
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(.accentColor)
@@ -131,15 +134,15 @@ struct BookDetailsView: View {
                         .font(.custom("Montserrat-Regular", size: 18))
                 )
         }
-        .sheet(isPresented: $showingWebSheet, content: {
+        .sheet(isPresented: $showingBuyWebSheet, content: {
             WebView(url: url)
         })
     }
     
     @ViewBuilder
-    var previewLinkButton: some View {
+    func previewLinkButton(url: URL) -> some View {
         Button {
-            
+            showingPreviewWebSheet.toggle()
         } label: {
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(.accentColor)
@@ -149,6 +152,9 @@ struct BookDetailsView: View {
                         .foregroundColor(.black)
                         .font(.custom("Montserrat-Regular", size: 18))
                 )
+        }
+        .sheet(isPresented: $showingPreviewWebSheet) {
+            WebView(url: url)
         }
     }
     
