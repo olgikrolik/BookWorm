@@ -35,7 +35,7 @@ class BookDetailsManager: ObservableObject {
                         do {
                             let decodedData = try decoder.decode(BookDetailsData.self, from: safedata)
                             DispatchQueue.main.async {
-                                let bookInfoApiData = decodedData.items[0].volumeInfo
+                                let bookInfoApiData = decodedData.items[0].volumeInfo // stworzyć osobną func createBookInfoFromBookDetailsData
                                 let buyLink = decodedData.items[0].saleInfo.buyLink
                                 let previewLink = bookInfoApiData.previewLink
                                 

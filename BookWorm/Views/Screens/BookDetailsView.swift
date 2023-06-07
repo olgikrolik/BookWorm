@@ -49,11 +49,7 @@ struct BookDetailsView: View {
         .onAppear {
             self.bookDetailsManager.fetchBookDetails(bookTitle: title, bookAuthor: author)
         }
-//        .sheet(isPresented: $showingWebSheet, content: {
-//            WebView(url: bookDetailsManager.bookInfo.buyLink!)
-//        })
     }
-    
     
     func mergeDefinitionAndDescription(definition: String, description: String) -> AttributedString {
         var definitionAttributedString = AttributedString(definition)
@@ -65,7 +61,6 @@ struct BookDetailsView: View {
         return definitionAttributedString + descriptionAttributedString
     }
     
-    @ViewBuilder
     var blurredBackgroundImage: some View {
         AsyncImage(url: bookImageURL) { image in
             image
@@ -79,7 +74,6 @@ struct BookDetailsView: View {
         }
     }
     
-    @ViewBuilder
     var bookImage: some View {
         AsyncImage(url: bookImageURL) { image in
             image
@@ -91,7 +85,6 @@ struct BookDetailsView: View {
         }
     }
     
-    @ViewBuilder
     var bookTitle: some View {
         Text(title)
             .foregroundColor(.black)
@@ -100,27 +93,22 @@ struct BookDetailsView: View {
             .padding(.top, 20)
     }
     
-    @ViewBuilder
     var bookAuthor: some View {
         Text(mergeDefinitionAndDescription(definition: "Author: ", description: author))
     }
     
-    @ViewBuilder
     var bookISBN: some View {
         Text(mergeDefinitionAndDescription(definition: "ISBN: ", description: bookDetailsManager.bookInfo.isbn))
     }
     
-    @ViewBuilder
     var bookPageCount: some View {
         Text(mergeDefinitionAndDescription(definition: "Page count: ", description: bookDetailsManager.bookInfo.pageCount))
     }
     
-    @ViewBuilder
     var bookPublishedDate: some View {
         Text(mergeDefinitionAndDescription(definition: "Published date: ", description: bookDetailsManager.bookInfo.formattedPublishedDate))
     }
     
-    @ViewBuilder
     func buyLinkButton(url: URL) -> some View {
         Button {
             showingBuyWebSheet.toggle()
@@ -139,7 +127,6 @@ struct BookDetailsView: View {
         })
     }
     
-    @ViewBuilder
     func previewLinkButton(url: URL) -> some View {
         Button {
             showingPreviewWebSheet.toggle()
@@ -158,7 +145,6 @@ struct BookDetailsView: View {
         }
     }
     
-    @ViewBuilder
     var bookDescription: some View {
         Text(bookDetailsManager.bookInfo.description)
             .multilineTextAlignment(.leading)

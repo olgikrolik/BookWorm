@@ -15,71 +15,27 @@ struct BestsellersListView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Picker("Book genre", selection: $selectedBookGenre) {
-                    Text("Fiction")
-                        .tag(0)
-                    Text("Nonfiction")
-                        .tag(1)
-                }
-                .pickerStyle(.segmented)
-                .colorMultiply(.accentColor)
-                
+                pickerBookGenreSelection
                 HStack {
-                    Button {
-                        if selectedBookGenre == 0 {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.previousListDate)
-                        } else {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.previousListDate)
-                        }
-                    } label: {
-                        Image(systemName: "arrowtriangle.backward")
-                    }
-                    
-                    Text(bestsellersManager.formattedListDate)
-                        .padding()
-                        .font(.custom("Montserrat-Light", size: 13))
-                    
-                    Button {
-                        if selectedBookGenre == 0 {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.nextListDate)
-                        } else {
-                            self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.nextListDate)
-                        }
-                    } label: {
-                        Image(systemName: "arrowtriangle.forward")
-                    }
-                    
+                    arrowBackwardButton
+                    bestsellersListDate
+                    arrowForwardButton
                 }
                 List(bestsellersManager.bookData) { book in
                     NavigationLink(value: book) {
                         HStack {
                             VStack {
-                                Text(String(book.rank))
-                                    .foregroundColor(.accentColor)
-                                    .font(.custom("Montserrat-Light", size: 34))
-                                    .frame(width: 35)
+                                bookRank(book: book)
                                 Spacer()
                             }
-                            
                             VStack(alignment: .leading) {
-                                Text(String(book.title))
-                                    .font(.custom("Montserrat-Regular", size: 17))
-                                    .padding(.top, 5)
-                                Text("by \(book.author)")
-                                    .font(.custom("Montserrat-Light", size: 15))
-                                Text(String(book.description))
-                                    .font(.custom("Montserrat-Regular", size: 13))
-                                    .padding(.top, 3)
+                                bookName(book: book)
+                                bookWriter(book: book)
+                                bookSummary(book: book)
                                 Spacer()
                             }
                             Spacer()
-                            AsyncImage(url: book.bookImageURL) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 70, height: 115)
-                            
+                            bookCover(book: book)
                         }
                     }
                 }
@@ -105,6 +61,81 @@ struct BestsellersListView: View {
             Alert(title: Text("Error"), message: Text("The maximum number of requests has been reached. Please wait 1 minute."), dismissButton: .default(Text("OK")))
         }
     }
+    
+    var pickerBookGenreSelection: some View {
+        Picker("Book genre", selection: $selectedBookGenre) {
+            Text("Fiction")
+                .tag(0)
+            Text("Nonfiction")
+                .tag(1)
+        }
+        .pickerStyle(.segmented)
+        .colorMultiply(.accentColor)
+    }
+    
+    var arrowBackwardButton: some View {
+        Button {
+            if selectedBookGenre == 0 {
+                self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.previousListDate)
+            } else {
+                self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.previousListDate)
+            }
+        } label: {
+            Image(systemName: "arrowtriangle.backward")
+        }
+    }
+    
+    var bestsellersListDate: some View {
+        Text(bestsellersManager.formattedListDate)
+            .padding()
+            .font(.custom("Montserrat-Light", size: 13))
+    }
+    
+    var arrowForwardButton: some View {
+        Button {
+            if selectedBookGenre == 0 {
+                self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: bestsellersManager.nextListDate)
+            } else {
+                self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: bestsellersManager.nextListDate)
+            }
+        } label: {
+            Image(systemName: "arrowtriangle.forward")
+        }
+    }
+    
+    func bookRank(book: Book) -> some View {
+        Text(String(book.rank))
+            .foregroundColor(.accentColor)
+            .font(.custom("Montserrat-Light", size: 34))
+            .frame(width: 35)
+    }
+    
+    func bookName(book: Book) -> some View {
+        Text(String(book.title))
+            .font(.custom("Montserrat-Regular", size: 17))
+            .padding(.top, 5)
+    }
+    
+    func bookWriter(book: Book) -> some View {
+        Text("by \(book.author)")
+            .font(.custom("Montserrat-Light", size: 15))
+    }
+    
+    func bookSummary(book: Book) -> some View {
+        Text(String(book.description))
+            .font(.custom("Montserrat-Regular", size: 13))
+            .padding(.top, 3)
+    }
+    
+    func bookCover(book: Book) -> some View {
+        AsyncImage(url: book.bookImageURL) { image in
+            image.resizable()
+        } placeholder: {
+            ProgressView()
+        }
+        .frame(width: 70, height: 115)
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
