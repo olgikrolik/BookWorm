@@ -57,8 +57,11 @@ struct BestsellersListView: View {
                 self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: "")
             }
         }
-        .alert(isPresented: $bestsellersManager.showError) {
+        .alert(isPresented: $bestsellersManager.showRequestsNumberExceededError) {
             Alert(title: Text("Error"), message: Text("The maximum number of requests has been reached. Please wait 1 minute."), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $bestsellersManager.showGeneralError) {
+            Alert(title: Text("Error"), message: Text("Oops! Something went wrong."), dismissButton: .default(Text("OK")))
         }
     }
     
