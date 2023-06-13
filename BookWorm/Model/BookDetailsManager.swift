@@ -19,22 +19,40 @@ struct BookInfo {
 class BookDetailsManager: ObservableObject {
     
     @Published var bookInfo: BookInfo = BookInfo(isbn: "", pageCount: "", formattedPublishedDate: "", description: "", buyLink: nil, previewLink: nil)
+    @Published var showErrorMessage = false
     
     func fetchBookDetails(bookTitle: String, bookAuthor: String) {
         let (titleWithPlusBetweenWords, authorWithPlusBetweenWords) = addPlusBetweenWords(title: bookTitle, author: bookAuthor)
         if let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=intitle:\(titleWithPlusBetweenWords)+inauthor:\(authorWithPlusBetweenWords)&key=AIzaSyBO7kh2ZpihDXbvsuzT5A9HEunlE8wSrDw") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
-                if error == nil {
-                    
-                }
-                if let data = data {
+                guard error == nil else {
                     DispatchQueue.main.async {
-                        do {
-                            self.bookInfo = try self.bookInfo(from: data)
-                        } catch {
-                            print(error)
+                        self.showErrorMessage = true
+                    }
+                    return
+                }
+                
+                if let response = response as? HTTPURLResponse {
+                    switch response.statusCode {
+                    case 200...299:
+                        if let data = data {
+                            DispatchQueue.main.async {
+                                do {
+                                    self.bookInfo = try self.bookInfo(from: data)
+                                } catch {
+                                    print(error)
+                                }
+                            }
                         }
+                    default:
+                        DispatchQueue.main.async {
+                            self.showErrorMessage = false
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.showErrorMessage = false
                     }
                 }
             }
@@ -45,16 +63,16 @@ class BookDetailsManager: ObservableObject {
     func bookInfo(from data: Data) throws -> BookInfo {
         let decoder = JSONDecoder()
         let decodedData = try decoder.decode(BookDetailsData.self, from: data)
-        let volumeInfo = decodedData.items[0].volumeInfo // stworzyć osobną func createBookInfoFromBookDetailsData
+        let volumeInfo = decodedData.items[0].volumeInfo 
         let buyLink = decodedData.items[0].saleInfo.buyLink
         let previewLink = volumeInfo.previewLink
-        var isbn: String = isbn(from: volumeInfo)
-        var pageCount: String = pageCount(from: volumeInfo)
-        var formattedPublishedDate: String = formattedPublishedDate(from: volumeInfo)
-        var description: String = description(from: volumeInfo)
+        let isbn: String = isbn(from: volumeInfo)
+        let pageCount: String = pageCount(from: volumeInfo)
+        let formattedPublishedDate: String = formattedPublishedDate(from: volumeInfo)
+        let description: String = description(from: volumeInfo)
         return BookInfo(isbn: isbn, pageCount: pageCount, formattedPublishedDate: formattedPublishedDate, description: description, buyLink: buyLink, previewLink: previewLink)
     }
- 
+    
     func addPlusBetweenWords(title: String, author: String) -> (titleWithPlusBetweenWords: String, authorWithPlusBetweenWords: String) {
         let titleWithPlusBetweenWords = title.replacingOccurrences(of: " ", with: "+")
         let authorWithPlusBetweenWords = author.replacingOccurrences(of: " ", with: "+")

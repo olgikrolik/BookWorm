@@ -49,6 +49,9 @@ struct BookDetailsView: View {
         .onAppear {
             self.bookDetailsManager.fetchBookDetails(bookTitle: title, bookAuthor: author)
         }
+        .alert(isPresented: $bookDetailsManager.showErrorMessage) {
+            Alert(title: Text("Error"), message: Text("Oops! Something went wrong."), dismissButton: .default(Text("OK")))
+        }
     }
     
     func mergeDefinitionAndDescription(definition: String, description: String) -> AttributedString {
@@ -153,9 +156,8 @@ struct BookDetailsView: View {
             .padding(.leading, 30)
             .padding(.trailing, 30)
     }
-
 }
-        
+
 
 struct BookDetailsView_Previews: PreviewProvider {
     static var previews: some View {

@@ -20,16 +20,8 @@ class BestsellersManager: ObservableObject {
     func fetchBestsellers(listGenre: String, bestsellersListDate: String) {
         if let url = URL(string: "https://api.nytimes.com/svc/books/v3/lists/\(bestsellersListDate)/\(listGenre).json?api-key=1NLFuQmHxAXMm4A7BtJo3t6hAtE5WqjG") {
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in // dodać obsługę błędów - general error dla status code'u innego niż 429
-                
-                //                if error != nil {
-                //                    DispatchQueue.main.async {
-                //                        self.showGeneralError = true
-                //                    }
-                //                    return
-                //                }
-                
-                guard error == nil else { //przejdę dalej jeśli ten warunek zostanie spełniony, jesli nie zostanie wywołuję else i dalej return
+            let task = session.dataTask(with: url) { data, response, error in
+                guard error == nil else {
                     DispatchQueue.main.async {
                         self.showGeneralError = true
                     }

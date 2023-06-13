@@ -46,6 +46,9 @@ struct BestsellersListView: View {
                 .listStyle(.plain)
             }
             .padding()
+            .alert(isPresented: $bestsellersManager.showRequestsNumberExceededError) {
+                Alert(title: Text("Error"), message: Text("The maximum number of requests has been reached. Please wait 1 minute."), dismissButton: .default(Text("OK")))
+            }
         }
         .onAppear {
             self.bestsellersManager.fetchBestsellers(listGenre: "trade-fiction-paperback", bestsellersListDate: "current")
@@ -56,9 +59,6 @@ struct BestsellersListView: View {
             } else {
                 self.bestsellersManager.fetchBestsellers(listGenre: "paperback-nonfiction", bestsellersListDate: "")
             }
-        }
-        .alert(isPresented: $bestsellersManager.showRequestsNumberExceededError) {
-            Alert(title: Text("Error"), message: Text("The maximum number of requests has been reached. Please wait 1 minute."), dismissButton: .default(Text("OK")))
         }
         .alert(isPresented: $bestsellersManager.showGeneralError) {
             Alert(title: Text("Error"), message: Text("Oops! Something went wrong."), dismissButton: .default(Text("OK")))
