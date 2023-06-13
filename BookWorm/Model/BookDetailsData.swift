@@ -29,7 +29,6 @@ struct VolumeInfo: Decodable {
         case pageCount = "pageCount"
         case previewLink = "previewLink"
         case ISBNIdentifiers = "industryIdentifiers"
-        
     }
 }
 

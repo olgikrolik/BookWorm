@@ -21,38 +21,54 @@ class BestsellersManager: ObservableObject {
         if let url = URL(string: "https://api.nytimes.com/svc/books/v3/lists/\(bestsellersListDate)/\(listGenre).json?api-key=1NLFuQmHxAXMm4A7BtJo3t6hAtE5WqjG") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in // dodać obsługę błędów - general error dla status code'u innego niż 429
-                if let response = response as? HTTPURLResponse {
+                
+                //                if error != nil {
+                //                    DispatchQueue.main.async {
+                //                        self.showGeneralError = true
+                //                    }
+                //                    return
+                //                }
+                
+                guard error == nil else { //przejdę dalej jeśli ten warunek zostanie spełniony, jesli nie zostanie wywołuję else i dalej return
                     DispatchQueue.main.async {
-                        switch response.statusCode {
-                        case 200...299 :
-                            let decoder = JSONDecoder()
-                            if let safedata = data {
-                                do {
-                                    let decodedData = try decoder.decode(BestsellersData.self, from: safedata)
-                                    DispatchQueue.main.async {
-                                        self.bookData = decodedData.results.books
-                                        self.listDateData = decodedData.results.listPublishedDate
-                                        let dateFormatter = DateFormatter()
-                                        dateFormatter.dateFormat = "y-MM-dd"
-                                        if let date = dateFormatter.date(from: self.listDateData) {
-                                            dateFormatter.dateFormat = "MMM d, Y"
-                                            self.formattedListDate = dateFormatter.string(from: date)
-                                        }
-                                        self.previousListDate = decodedData.results.previousPublishedDate
-                                        self.nextListDate = decodedData.results.nextPublishedDate
+                        self.showGeneralError = true
+                    }
+                    return
+                }
+                
+                if let response = response as? HTTPURLResponse {
+                    switch response.statusCode {
+                    case 200...299:
+                        let decoder = JSONDecoder()
+                        if let data = data {
+                            do {
+                                let decodedData = try decoder.decode(BestsellersData.self, from: data)
+                                DispatchQueue.main.async {
+                                    self.bookData = decodedData.results.books
+                                    self.listDateData = decodedData.results.listPublishedDate
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "y-MM-dd"
+                                    if let date = dateFormatter.date(from: self.listDateData) {
+                                        dateFormatter.dateFormat = "MMM d, Y"
+                                        self.formattedListDate = dateFormatter.string(from: date)
                                     }
-                                } catch {
-                                    print(error.localizedDescription)
+                                    self.previousListDate = decodedData.results.previousPublishedDate
+                                    self.nextListDate = decodedData.results.nextPublishedDate
                                 }
+                            } catch {
+                                print(error.localizedDescription)
                             }
-                        case 429 :
+                        }
+                    case 429:
+                        DispatchQueue.main.async {
                             self.showRequestsNumberExceededError = true
-                        default :
+                        }
+                    default:
+                        DispatchQueue.main.async {
                             self.showGeneralError = true
                         }
                     }
-                }
-                if error != nil {
+                } else {
                     DispatchQueue.main.async {
                         self.showGeneralError = true
                     }

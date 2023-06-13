@@ -23,7 +23,6 @@ struct Results: Decodable {
         case nextPublishedDate = "next_published_date"
         case books = "books"
     }
-    
 }
 
 struct Book: Decodable, Identifiable, Hashable {
