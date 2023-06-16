@@ -13,6 +13,7 @@
 		6352E17D29DFDA530026074F /* BestsellersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352E17C29DFDA530026074F /* BestsellersData.swift */; };
 		63673A752A15F38700CD2D4D /* BookDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63673A742A15F38700CD2D4D /* BookDetailsManager.swift */; };
 		63673A772A175D4300CD2D4D /* BookDetailsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63673A762A175D4300CD2D4D /* BookDetailsData.swift */; };
+		6377771F2A3CFB2F00F294ED /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6377771E2A3CFB2F00F294ED /* README.md */; };
 		6386707229E6741800C5D45B /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6386707129E6741800C5D45B /* Montserrat-Light.ttf */; };
 		6386707429E6742400C5D45B /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6386707329E6742400C5D45B /* Montserrat-Regular.ttf */; };
 		6386707629E6752300C5D45B /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6386707529E6752300C5D45B /* Montserrat-ExtraLight.ttf */; };
@@ -30,6 +31,7 @@
 		6352E17C29DFDA530026074F /* BestsellersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellersData.swift; sourceTree = "<group>"; };
 		63673A742A15F38700CD2D4D /* BookDetailsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsManager.swift; sourceTree = "<group>"; };
 		63673A762A175D4300CD2D4D /* BookDetailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsData.swift; sourceTree = "<group>"; };
+		6377771E2A3CFB2F00F294ED /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		6386707129E6741800C5D45B /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		6386707329E6742400C5D45B /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		6386707529E6752300C5D45B /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		63AC854929D61B7A00874E1C = {
 			isa = PBXGroup;
 			children = (
+				6377771E2A3CFB2F00F294ED /* README.md */,
 				63AC855429D61B7A00874E1C /* BookWorm */,
 				63AC855329D61B7A00874E1C /* Products */,
 			);
@@ -192,6 +195,7 @@
 				6386707429E6742400C5D45B /* Montserrat-Regular.ttf in Resources */,
 				6386707229E6741800C5D45B /* Montserrat-Light.ttf in Resources */,
 				63AC855D29D61B7C00874E1C /* Preview Assets.xcassets in Resources */,
+				6377771F2A3CFB2F00F294ED /* README.md in Resources */,
 				6386707629E6752300C5D45B /* Montserrat-ExtraLight.ttf in Resources */,
 				6386707829E6753300C5D45B /* Montserrat-Thin.ttf in Resources */,
 				63AC855A29D61B7C00874E1C /* Assets.xcassets in Resources */,
