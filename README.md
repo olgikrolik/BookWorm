@@ -21,7 +21,10 @@ Two types of alerts you may encounter while using the app:
 
 ![Error number of requests](/Images&Gifs/ErrorNumberOfRequests.gif)
 
-* 
+* the rest of network/server errors (ex. no Internet connection) is handled by general error
+
+![General error](/Images&Gifs/GeneralError.gif)
+
 
 
 
