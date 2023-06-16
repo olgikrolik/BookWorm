@@ -11,6 +11,8 @@ BookWorm app displays bestseller lists published every week by the New York Time
 ## API
 
 The application uses two APIs:
-- the first screen fetches data from the [New York Times Books API](https://developer.nytimes.com/docs/books-product/1/overview)
-- the second screen from [Google Books API](https://developers.google.com/books/docs/v1/using)
+* the first screen with bestsellers list fetches data from the [New York Times Books API](https://developer.nytimes.com/docs/books-product/1/overview)
+* the second screen with book details takes data from [Google Books API](https://developers.google.com/books/docs/v1/using)
+
+
 
