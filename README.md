@@ -19,11 +19,11 @@ The application uses two APIs:
 Two types of alerts you may encounter while using the app:
 * New York Times API has a call limit of 5 requests per minute. When this limit is exceeded, the following alert will be displayed.
 
-![Error number of requests](/Images&Gifs/ErrorNumberOfRequests.gif)
+![Error number of requests](/Images&Gifs/ErrorRequests.gif)
 
 * the rest of network/server errors (ex. no Internet connection) is handled by general error
 
-![General error](/Images&Gifs/GeneralError.gif)
+![General error](/Images&Gifs/ErrorConnection.gif)
 
 
 
